@@ -1,4 +1,5 @@
 from easydict import EasyDict
+import torch
 
 data_dir='./drive/MyDrive/FL_data/Fling_data'  # Colab的数据保存路径
 # data_dir='./data/'  # 正常的数据保持路径
@@ -7,7 +8,7 @@ exp_args = dict(
         dataset='cifar10', data_path='./data/CIFAR10', sample_method=dict(name='dirichlet', train_num=500, test_num=100,alpha=0.1)
     ),  # 这个路径是存储数据集的路径
     learn=dict(  # 对学习的设置
-        device='cuda:0', local_eps=8, global_eps=100, batch_size=32, optimizer=dict(name='sgd', lr=0.02, momentum=0.9)
+        device='cuda:0' if torch.cuda.is_available() else "cpu", local_eps=8, global_eps=100, batch_size=32, optimizer=dict(name='sgd', lr=0.02, momentum=0.9)
     ),
     model=dict(  # 对模型的设置
         name='resnet8',

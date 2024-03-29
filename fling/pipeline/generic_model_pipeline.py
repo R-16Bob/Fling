@@ -45,7 +45,7 @@ def generic_model_pipeline(args: dict, seed: int = 0) -> None:
     launcher = get_launcher(args)
 
     # Training loop
-    for i in range(args.learn.global_eps):
+    for i in range(args.other.resume_eps,args.learn.global_eps):
         logger.logging('Starting round: ' + str(i))
         # Initialize variable monitor.
         train_monitor = VariableMonitor()
