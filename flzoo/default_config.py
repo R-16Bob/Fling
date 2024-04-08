@@ -114,6 +114,7 @@ default_exp_args = dict(
         # will start from scratch.
         resume_path=None,
         # Whether to print config is the command line.
+        resume_eps=0,
         print_config=False,
     ),
 )
